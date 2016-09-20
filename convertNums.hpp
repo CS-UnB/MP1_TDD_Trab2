@@ -10,18 +10,14 @@
 #include <string>
 using std::string;
 
-
-
-
 class ConvertNums {
   public:
     ConvertNums(){};
     int getRomanEquivalentValue(char  romanString);
     int convert_toArabic(string& romanNumeral_String);
-    int VERIFY_ifFourI(string & String_toVerify);
+    int VERIFY_ifFour(string & String_toVerify);
+    int VERIFY_ifTwo(string & String_toVerify);
+    int VERIFY_Subtraction(string & String_toVerify);
 };
-
-
-
 
 #endif /* CONVERTNUMS_HPP_ */
