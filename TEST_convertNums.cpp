@@ -41,7 +41,7 @@ TEST(ConvertNums, convert_toArabic) {
   EXPECT_EQ(11, c.convert_toArabic(romanNumeral_toConvert));
 
   romanNumeral_toConvert = "IIII";
-  EXPECT_EQ(-1, c.convert_toArabic(romanNumeral_toConvert));	/*TESTE que deve falhar*/
+  EXPECT_EQ(-4, c.convert_toArabic(romanNumeral_toConvert));	/*TESTE que deve falhar*/
 }
 
 

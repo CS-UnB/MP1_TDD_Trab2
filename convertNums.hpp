@@ -18,6 +18,7 @@ class ConvertNums {
     ConvertNums(){};
     int getRomanEquivalentValue(char  romanString);
     int convert_toArabic(string& romanNumeral_String);
+    int VERIFY_ifFourI(string & String_toVerify);
 };
 
 
