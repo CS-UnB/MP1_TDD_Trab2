@@ -15,9 +15,9 @@ using std::string;
 
 class ConvertNums {
   public:
-    ConvertNums() {}
+    ConvertNums(){};
     int getRomanEquivalentValue(char  romanString);
-    int convert_toArabic(const string& romanNumeral_String);
+    int convert_toArabic(string& romanNumeral_String);
 };
 
 

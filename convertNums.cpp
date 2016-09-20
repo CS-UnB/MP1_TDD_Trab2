@@ -15,7 +15,7 @@
 
 char romanNumeral[N];
 
-int getRomanEquivalentValue (char  romanString){	/*Converte numerais Romanos para Arabicos*/
+int ConvertNums::getRomanEquivalentValue(char  romanString){	/*Converte numerais Romanos para Arabicos*/
 	switch(romanString){
 	case 'I':return 1;
 	case 'V':return 5;
@@ -28,7 +28,7 @@ int getRomanEquivalentValue (char  romanString){	/*Converte numerais Romanos par
 	return -1;
 }
 
-int convert_toArabic(const string & romanNumeral_String){
+int ConvertNums::convert_toArabic(string & romanNumeral_String){
 		int sum = 0; char prev='%';
 		for(int i=(romanNumeral_String.length()-1); i>=0; i--)
 		{
