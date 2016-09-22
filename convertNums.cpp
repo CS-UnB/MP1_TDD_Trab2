@@ -11,6 +11,13 @@
 
 
 /*IMPLEMENTACAO*/
+/**\p getRomanEquivalentValue
+ * \brief Gets the int value to a char(Roman) character
+ * \details Internal functions called within ConvertNums::covert_toArabic in a loop
+ * which gets the value for each char member of a given RomanNumeral string
+ * \param romanString Char of Roman numeral
+ * \return returns int value equivalent to the Roman numeral char
+ * */
 int ConvertNums::getRomanEquivalentValue(char  romanString){
 	switch(romanString){
 	case 'I':return 1;
@@ -24,9 +31,18 @@ int ConvertNums::getRomanEquivalentValue(char  romanString){
 	return -1;
 }
 
+/**\p convert_toArabic
+ * \brief Converts a given Roman string into an int value
+ * \details Reads the string from back to front, calling the function getRomanEquivalentValue
+ * and works with the data as follows:
+ * if valueToLeft is smaller than the sumOfPrevious, subtracts the valueToLeft from the sum
+ * else, adds the value to the sum
+ * \param romanNumeral_String A given string of Roman numerals
+ * \return Return the total sum of the integers for each char in the string, respecting sum rules
+ * */
 int ConvertNums::convert_toArabic(string & romanNumeral_String){
-	int sum = 0;
-	char prev='%';
+	int sum = 0;	/**< variable to control the sum of members*/
+	char prev='%';	/**< saves value of the current position in the string before moving on the loop to the next value*/
 
 	/*VERIFYING REQUISITES AND VALIDITY*/
 	if(VERIFY_ifFour(romanNumeral_String) == -4) return -4;
@@ -51,6 +67,15 @@ int ConvertNums::convert_toArabic(string & romanNumeral_String){
 	return sum;
 }
 
+/**\p VERIFY_ifFour
+ * \brief Verify if there are four of same numeral in sequence
+ * \details Given Roman numeral's formating rules, there can't be four of the same numeral in a sequence,
+ * so this function verifies the string's validity
+ * It is called with a loop, so verifies the numeral and its next 3
+ * following numerals for each numeral itself until the end of the string
+ * \param String_toVerify String passed to be verified
+ * \return Returns -4 if there are 4 repeated members(invalid) and 0 if not(if valid)
+ * */
 int ConvertNums::VERIFY_ifFour(string & String_toVerify){
 	for(int i=(String_toVerify.length()-1); i>=0; i--){
 		if(String_toVerify[(i)] == String_toVerify[i+1] &&
@@ -66,6 +91,15 @@ int ConvertNums::VERIFY_ifFour(string & String_toVerify){
 	return 0;
 }
 
+/**\p VERIFY_ifTwo
+ * \brief Verify if there are two of same numeral in sequence
+ * \details Given Roman numeral's formating rules, there can't more than one of the given 'V', 'L' and 'D' numerals in sequence,
+ * so this function verifies the string's validity
+ * It is called with a loop, so verifies the numeral and its next
+ * following numerals for each numeral itself until the end of the string
+ * \param String_toVerify String passed to be verified
+ * \return Returns -2 if there are 4 repeated members(invalid) and 0 if not(if valid)
+ * */
 int ConvertNums::VERIFY_ifTwo(string & String_toVerify){
 	int stringLength = String_toVerify.length()-1;
 	for(int i = 0; i <= stringLength; i++){
@@ -78,6 +112,20 @@ int ConvertNums::VERIFY_ifTwo(string & String_toVerify){
 	}
 	return 0;
 }
+
+/**\p VERIFY_Subtraction
+ * \brief Verify if RomanNumeral string follows formating rules
+ * \details Function that verifies the validity of the string by following certain Roman numerals formation rules
+ * such as:
+ * - 'I' can only be subtracted(come before) from 'V' and 'X'
+ * - 'X' can only be subtracted(come before) from 'L' and 'C'
+ * - 'C' can only be subtracted(come before) from 'D' and 'M'
+ * - 'V', 'L' and 'D' cannot be subtracted from any other numeral
+ * It is called with a loop, so verifies the numeral and its following member to every memeber in the string
+ *
+ * \param String_toVerify String passed to be verified
+ * \return Returns -1 if  formating is invalid and 0 if valid
+ * */
 
 int ConvertNums::VERIFY_Subtraction(string & String_toVerify){
 	int stringLength = String_toVerify.length()-1;
